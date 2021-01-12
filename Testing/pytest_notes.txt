@@ -1,0 +1,64 @@
+====================================================================================================================================================================
+
+PYTEST for UNIT TESTING
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Pytest is used for unit testing in python
+To run pytest to check for all the test_ functions in your folder, just run 	  "pytest"	in that folder.
+Pytest will look for all the files that begin with test_ (the word test followed by underscore), and in those files, it will check those functions that begin with test_ . 
+
+
+You just need to do assert in the test function.
+
+
+To run all tests in a particular file, type in the command line 	"pytest test_file_name.py"     in that folder.
+
+To get a more detailed report of what all functions passed and what all did not, give "-v" tag for verbose along with pytest, like
+	pytest test_file.py -v
+	pytest -v
+
+
+Note: pytest will not look at the file names or the functions that do not begin with test_ (special ones identified by pytest)
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+To specify test functions which contains a certain string keyword in its function name, specify it with "-k" option, ex:
+	pytest -v -k "add"
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+To specify markers to mark each function with a name, we can use a decorator function called @pytest.mark.<your_mark_name>
+eg: 	@pytest.mark.strings
+
+Then in the command line, to only test the functions which have this decorator, you can specify the "-m" option for mark. So in terminal, just run
+	pytest -v -m strings
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+To exit as soon as your first failure occurs (exit on the first function failure), we can specify "-x" for exit
+	pytest -v -x
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+@pytest.mark.parametrize()
+this decorator allows to give multiple test cases to the same function
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+To get red - green testing configurations in vs code,
+Press "Ctrl + Shift + p", then select "Python : Run all tests"
+Do it again to get the red green layout.
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+To avoid repetitive code, we can use:
+1. Setup and Teardown modules
+2. Fixtures				use the @pytest.fixture() above the function you write to do the common job
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+These testings are crucial when integrating software development which uses databases.
+
+
+

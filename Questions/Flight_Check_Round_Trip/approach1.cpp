@@ -52,7 +52,7 @@ map<string, vector<EachPersonsFlightDetails>> getPersonsFlights(vector<EachFligh
     map<string, EachPersonsFlightDetails> PersonsFlights;
     for(auto eachFlight : Flights)
     {
-        EachPersonsFlightDetails this_flight(eachFlight.date, eachFlight.from, eachFlight.to);
+        EachPersonsFlightDetails this_flight = EachPersonsFlightDetails(eachFlight.date, eachFlight.from, eachFlight.to);
         PersonsFlights[eachFlight.person].push_back(this_flight);
     }
     return PersonsFlights;
@@ -69,7 +69,6 @@ bool checkIfRoundTrip(vector<EachPersonsFlightDetails> FlightDetails)
     
     // now for this person, I have all his trips sorted by dates. Now i need to detect round trip
     // one option is to convert his details to a directed graph then do a dfs (by color trick 0, 1, 2) to detect cycle in directed graph
-    // But if its given that he only uses flight mode of transport, then we can just use a set
     
     unordered_set<string> placesVisitedInCurrentContinuousTrip;
     placesVisitedInCurrentContinuousTrip.insert(FlightDetails[0].from);
@@ -87,6 +86,7 @@ bool checkIfRoundTrip(vector<EachPersonsFlightDetails> FlightDetails)
     return false;
 
     // note: this set approach would work even if other modes of transport are also used
+    // and it handles missing data 
 }
 
 
@@ -98,6 +98,7 @@ vector<string> getListOfRoundTripPeople(map<string, vector<EachPersonsFlightDeta
         if(checkIfRoundTrip(eachPersonsFlight))
             ListOfRoundTripPeople.push_back(eachPersonsFlight.first);      // .first gives person, .second gives the object
     }
+    return ListOfRoundTripPeople;
 }
 
 int main()

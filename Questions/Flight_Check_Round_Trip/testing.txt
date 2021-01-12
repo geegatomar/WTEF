@@ -1,0 +1,7 @@
+A -> B -> C -> A      (detected)
+
+A -> B -> C
+D -> E -> C      (will not be detected since after C from prev line, there is discontinuity, so 
+                    in the second one it wont be detected in my set as I would have refreshed it)
+
+A -> B -> C -> D -> B     (detected)
