@@ -6,7 +6,7 @@ def test_basic():
 
 
 def test_basic_true():
-    assert False
+    assert True
 
 
 def test_with_value():
